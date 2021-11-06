@@ -6,9 +6,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define SMALL 5000
-#define MID 10000
-#define LARGE 15000
+#define SMALL 3000
+#define MID 5000
+#define LARGE 7000
 
 void bubble(int arr[], int count){
 	int temp = 0;
@@ -79,10 +79,12 @@ int main(void){
 			exit(0);
 		}
 	}
-	//system("top");
+	system("top");
 	while((endpid=wait(&state))>0){
 		//printf("+++process %d ends+++\n", endpid);
 	}
+	printf("----------------All processes are finished!!!----------------\n");
+
 	free(numArr);
 	free(numArr_large);
 	free(numArr_small);

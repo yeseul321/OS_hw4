@@ -43,6 +43,7 @@ int main(void){
 	while((endpid=wait(&state))>0){
 		//printf("+++process %d ends+++\n", endpid);
 	}
+	printf("----------------All processes are finished!!!----------------\n");
 	free(numArr);
 	return 0;
 }
