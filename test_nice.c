@@ -6,9 +6,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define SMALL 3000
-#define MID 5000
-#define LARGE 7000
+#define SMALL 5000
+#define MID 10000
+#define LARGE 15000
 
 void bubble(int arr[], int count){
 	int temp = 0;
