@@ -50,28 +50,23 @@ int main(void){
 		pid[i] = fork();
 		if(pid[i]>0){
 			printf("***process %d begins***\n", pid[i]);
-			//sprintf(msg2, "chrt -p %d", pid[i]);
-			//system(msg2);
 		}
 		else if(pid[i] == 0){
 			sprintf(msg2, "chrt -p %d", getpid());
 			if(i>=0&&i<7){
-				//small nice
+				//high nice, small array
 				nice(19);
-				//system(msg2);
 				bubble(numArr_small, SMALL);
 				num = 0;
 			}
 			else if(i>=7&&i<14){
-				//mid nice
-				//system(msg2);
+				//mid nice, mid array
 				bubble(numArr, MID);
 				num = 1;
 			}
 			else{
-				//large nice
+				//low nice, large array
 				nice(-20);
-				//system(msg2);
 				bubble(numArr_large, LARGE);
 				num = 2;
 			}
@@ -79,7 +74,6 @@ int main(void){
 			exit(0);
 		}
 	}
-	system("top");
 	while((endpid=wait(&state))>0){
 		//printf("+++process %d ends+++\n", endpid);
 	}

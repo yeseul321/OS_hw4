@@ -23,8 +23,6 @@ int main(void){
 		pid[i] = fork();
 		if(pid[i]>0){
 			printf("***process %d begins***\n", pid[i]);
-			//sprintf(msg2, "chrt -p %d", pid[i]);
-			//system(msg2);
 		}
 		else if(pid[i] == 0){
 			for(int j = 0;j < 10000; j++){

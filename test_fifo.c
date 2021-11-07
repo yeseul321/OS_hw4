@@ -31,7 +31,6 @@ int main(void){
 	pid_t endpid;
 	char msg2[50];
 	int state;
-	int num;
 	int tem;
 	srand(time(NULL));
 
@@ -49,57 +48,36 @@ int main(void){
 		numArr[i] = rand()%1000;
 	}
 
-	//setpriority(PRIO_PROCESS, 90, getpid());
 
 	for(int i=0;i<21;i++){
 		pid[i] = fork();
 		if(pid[i]>0){
-			//printf("***process %d begins***\n", pid[i]);
-			//sprintf(msg2, "chrt -p %d", pid[i]);
-			//system(msg2);
+			printf("***process %d begins***\n", pid[i]);
 		}
 		else if(pid[i] == 0){
-			//sprintf(msg2, "chrt -p %d", getpid());
-			//if(tem = getpriority(PRIO_PROCESS, getpid())<0){
-			//	printf("error\n");
-			//}
-			//else
-			//	printf("%d : %d\n", getpid(), tem);
 
 			if(i>=0&&i<7){
-				//small nice
-				//nice(19);
-				//system(msg2);
-				printf("***process %d begins***\n", getpid());
+				//large array
 				bubble(numArr_large, LARGE);
 				printf("+++process %d ends+++\n", getpid());
-				num = 0;
 			}
 			else if(i>=7&&i<14){
-				//mid nice
-				//system(msg2);
-				printf("***process %d begins***\n", getpid());
+				//mid array
 				bubble(numArr, MID);
 				printf("+++process %d ends+++\n", getpid());
-				num = 1;
 			}
 			else{
-				//large nice
-				//nice(-20);
-				//system(msg2);
-				printf("***process %d begins***\n", getpid());
+				//small array
 				bubble(numArr_small, SMALL);
 				printf("+++process %d ends+++\n", getpid());
-				num = 2;
 			}
-			//printf("+++process %d ends+++(%d)\n", getpid(), num);
 			exit(0);
 		}
 	}
-	//system("top");
-	while((endpid=wait(&state))>0){
-		//printf("+++process %d ends+++\n", endpid);
-	}
+	while((endpid=wait(&state))>0){}
+
+	printf("----------------All processes are finished!!!----------------\n");
+
 	free(numArr);
 	free(numArr_large);
 	free(numArr_small);
